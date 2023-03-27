@@ -14,11 +14,11 @@ class Question(Base):
 
     id = Column(Integer(), primary_key=True)
     question = Column(String())
-    answer = Column(String())
-    category = Column(String())
-    difficulty = Column(String())
-
-
+    answer1 = Column(String())
+    answer2 = Column(String())
+    answer3 = Column(String())
+    answer4 = Column(String())
+    correct_answer = Column(String())
 
 
 if __name__ == '__main__':
