@@ -26,12 +26,12 @@ class CLI:
         while exit == False:
             print(' ')
             print('Welcome to the Hospital Database!')
-            user_input = input("Press A to view patients, B for doctors, C for unit. or X to exit:")
+            user_input = input("Press A to view Patients, B for Doctors, C for Units or X to Exit:")
             print(' ')
             if user_input =="A" or user_input == "a":
             # def print_grapes(patients):
                 print(' ')
-                print('** Patient **')
+                print('** Patients **')
                 print(' ')
                 
                 
@@ -42,7 +42,7 @@ class CLI:
             
 
                 print(' ')
-                print('** Doctor **')
+                print('** Doctors **')
                 print(' ')
                 
                 
@@ -52,17 +52,22 @@ class CLI:
             elif user_input =="C" or user_input == "c":
 
                 print(' ')
-                print('** Unit **')
+                print('** Units **')
                 print(' ')
                 
                 for index, unit in enumerate(self.units):
                     print(f'{index + 1}. name: {unit.name} location: {unit.location}')
-            
-            elif user_input =="X" or user_input == "x":
+
+            user_input = input("Would you like to see Visits? Y/n")
+            if user_input =="Y" or user_input == "y":
+                # exit = True
+                print(' ')
+                print('** Visits **')
+                print(' ')
+                for index, visit in enumerate(self.visits):
+                    print(f'{index + 1}. Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Status: {visit.status}')
+            elif user_input == "N" or user_input == "n":
                 exit = True
-
-    
-
 if __name__ == '__main__':
     engine = create_engine('sqlite:///db/hospital.db')
     Session = sessionmaker(bind=engine)
