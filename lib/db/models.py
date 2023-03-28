@@ -56,10 +56,10 @@ class Visit(Base):
 
     def __repr__(self):
         return f"Visit: {self.id}: " \
-                + f"Patient: {self.patient_id}" \
-                + f"Doctor: {self.doctor_id}" \
-                + f"Unit: {self.unit_id}" \
-                + f"Status: {self.status}" \
+                + f"Patient: {self.patient_id} " \
+                + f"Doctor: {self.doctor_id} " \
+                + f"Unit: {self.unit_id} " \
+                + f"Status: {self.status} " \
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///hospital.db')
