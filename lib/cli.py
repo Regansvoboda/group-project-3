@@ -18,42 +18,50 @@ class CLI:
         self.doctors = [doctor for doctor in session.query(Doctor)]
         self.units = [unit for unit in session.query(Unit)]
         self.visits = [visit for visit in session.query(Visit)]
+        self.start()
 
-        print(' ')
-        print('Welcome to the Hospital Database!')
-        print(' ')
 
+    def start(self):
         exit = False
         while exit == False:
-            print('Name: ' + self.patients[0].first_name + ' ' + self.patients[0].last_name)
-            print('Attending Physician: ' + self.doctors[0].first_name + ' ' + self.doctors[0].last_name)
-            print('Unit: ' + self.units[1].name)
-            print('Status: ' + self.visits[0].status)
             print(' ')
-            print('Name: ' + self.patients[1].first_name + ' ' + self.patients[1].last_name)
-            print('Attending Physician: ' + self.doctors[1].first_name + ' ' + self.doctors[1].last_name)
-            print('Unit: ' + self.units[0].name)
-            print('Status: ' + self.visits[2].status)
+            print('Welcome to the Hospital Database!')
+            user_input = input("Press A to view patients, B for doctors, C for unit. or X to exit:")
             print(' ')
-            print('Name: ' + self.patients[2].first_name + ' ' + self.patients[2].last_name)
-            print('Attending Physician: ' + self.doctors[2].first_name + ' ' + self.doctors[2].last_name)
-            print('Unit: ' + self.units[0].name)
-            print('Status: ' + self.visits[2].status)
-            print(' ')
-
-            print('Visit: ' + self.visits[0].status)
-            print('Patient ID:'+ f" {self.visits[0].patient_id}")
-            print('Patient Name:'+ f" {self.patients[self.visits[0].patient_id].first_name}")
-
+            if user_input =="A" or user_input == "a":
+            # def print_grapes(patients):
+                print(' ')
+                print('** Patient **')
+                print(' ')
+                
+                
+                for index, patient in enumerate(self.patients):
+                    print(f'{index + 1}. first: {patient.first_name} last: {patient.last_name}')
+            
+            elif user_input =="B" or user_input == "b":
             
 
-            user_input = input("Would you like to exit now? (Type y/n): ")
-            print(' ')
-            if user_input == "y" or user_input == 'T':
-                exit = True
-            else:
-                print("OK, let's keep going!")
                 print(' ')
+                print('** Doctor **')
+                print(' ')
+                
+                
+                for index, doctor in enumerate(self.doctors):
+                    print(f'{index + 1}. first: {doctor.first_name} last: {doctor.last_name}')
+
+            elif user_input =="C" or user_input == "c":
+
+                print(' ')
+                print('** Unit **')
+                print(' ')
+                
+                for index, unit in enumerate(self.units):
+                    print(f'{index + 1}. name: {unit.name} location: {unit.location}')
+            
+            elif user_input =="X" or user_input == "x":
+                exit = True
+
+    
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///db/hospital.db')
