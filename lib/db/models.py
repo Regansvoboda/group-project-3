@@ -56,9 +56,9 @@ class Visit(Base):
 
     def __repr__(self):
         return f"Visit: {self.id}: " \
-                + f"Patient: {self.patient}" \
-                + f"Doctor: {self.doctor}" \
-                + f"Unit: {self.unit}" \
+                + f"Patient: {self.patient_id}" \
+                + f"Doctor: {self.doctor_id}" \
+                + f"Unit: {self.unit_id}" \
                 + f"Status: {self.status}" \
 
 if __name__ == '__main__':
