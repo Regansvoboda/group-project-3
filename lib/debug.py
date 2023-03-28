@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from db.models import Patient, Doctor, Unit, Visit
-
+print("working")
 if __name__ == '__main__':
     engine = create_engine('sqlite:///db/hospital.db')
     Session = sessionmaker(bind=engine)
@@ -15,6 +15,6 @@ if __name__ == '__main__':
     visits = [visit for visit in session.query(Visit)]
     breakpoint()
 
-    print("working")
+    
 
     import ipdb; ipdb.set_trace

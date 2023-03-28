@@ -40,6 +40,13 @@ class CLI:
             print('Unit: ' + self.units[0].name)
             print('Status: ' + self.visits[2].status)
             print(' ')
+
+            print('Visit: ' + self.visits[0].status)
+            print('Patient ID:'+ f" {self.visits[0].patient_id}")
+            print('Patient Name:'+ f" {self.patients[self.visits[0].patient_id].first_name}")
+
+            
+
             user_input = input("Would you like to exit now? (Type y/n): ")
             print(' ')
             if user_input == "y" or user_input == 'T':
