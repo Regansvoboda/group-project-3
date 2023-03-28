@@ -15,7 +15,7 @@ class Patient(Base):
     id = Column(Integer(), primary_key=True)
     first_name = Column(String())
     last_name = Column(String())
-    visits = relationship('Visit', backref=backref('patients.id'))
+    visits = relationship('Visit', backref=backref('patients'))
     
     def __repr__(self):
         return f"Patient: {self.id}: " \
@@ -27,7 +27,7 @@ class Doctor(Base):
     id = Column(Integer(), primary_key=True)
     first_name = Column(String())
     last_name = Column(String())
-    visits = relationship('Visit', backref=backref('doctors.id'))
+    visits = relationship('Visit', backref=backref('doctors'))
     
     def __repr__(self):
         return f"Doctor: {self.id}: " \
@@ -39,7 +39,7 @@ class Unit(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     location = Column(String())
-    visits = relationship('Visit', backref=backref('units.id'))
+    visits = relationship('Visit', backref=backref('units'))
     
     def __repr__(self):
         return f"Unit: {self.id}: " \
@@ -49,9 +49,9 @@ class Visit(Base):
     __tablename__ = 'visits'
 
     id = Column(Integer(), primary_key=True)
-    patient = Column(Integer(), ForeignKey('patients.id'))
-    doctor = Column(Integer(), ForeignKey('doctors.id'))
-    unit = Column(Integer(), ForeignKey('units.id'))
+    patient_id = Column(Integer(), ForeignKey('patients.id'))
+    doctor_id = Column(Integer(), ForeignKey('doctors.id'))
+    unit_id = Column(Integer(), ForeignKey('units.id'))
     status = Column(String())
 
     def __repr__(self):
