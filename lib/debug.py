@@ -15,4 +15,6 @@ if __name__ == '__main__':
     visits = [visit for visit in session.query(Visit)]
     breakpoint()
 
+    print("working")
+
     import ipdb; ipdb.set_trace
