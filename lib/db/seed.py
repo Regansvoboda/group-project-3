@@ -79,5 +79,5 @@ if __name__ == '__main__':
 
     session.bulk_save_objects([scott_henry, regan_svoboda, connor_sheets, doctor_bad, doctor_good, doctor_feelgood, unit_1, unit_2, visit_1, visit_2, visit_3])
     session.commit()
-    session.close()
+    # session.close()
 
