@@ -21,6 +21,10 @@ class CLI:
     def start(self):
         patient_ids = [patient.id for patient in self.patients]
         patient_names = [patient.first_name for patient in self.patients]
+        doctor_ids = [doctor.id for doctor in self.doctors]
+        doctor_names = [doctor.last_name for doctor in self.doctors]
+        unit_ids = [unit.id for unit in self.units]
+        unit_name = [unit.name for unit in self.units]
         p_id_visit = [visit.patient_id for visit in self.visits]
         
         exit = False
@@ -40,8 +44,12 @@ class CLI:
                     print(f'{index + 1}. first: {patient.first_name} last: {patient.last_name}')
                 user_input = input("Which patient do you want to see? ENTER Num ")
                 if (int(user_input) in patient_ids) and (int(user_input) in p_id_visit):
-                    print (patient_names[int(user_input)-1])
+                    
                     print ("we have a patient ")
+    
+                    for visit in self.visits:
+                        if visit.patient_id == int(user_input):
+                            print(f"{(patient_names[int(user_input)-1])} is seeing Dr. {doctor_names[visit.doctor_id - 1 ]} in the {unit_name[visit.unit_id - 1]} unit and is {visit.status}")
                 else:
                     print ("no patient")    
             elif user_input =="B" or user_input == "b":

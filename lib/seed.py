@@ -31,13 +31,13 @@ if __name__ == '__main__':
     )
     
     doctor_bad = Doctor(
-        first_name="Bad",
-        last_name="Doctor",
+        first_name="Doctor",
+        last_name="Bad",
     )
     
     doctor_good = Doctor(
-        first_name="Good",
-        last_name="Doctor",
+        first_name="Doctor",
+        last_name="Good",
     )
     
     doctor_feelgood = Doctor(
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     )
     
     visit_3 = Visit(
-        patient_id=2,
+        patient_id=3,
         doctor_id=3,
         unit_id=2,
         status="AWESOME!",
