@@ -21,6 +21,7 @@ class CLI:
     def start(self):
         patient_ids = [patient.id for patient in self.patients]
         patient_names = [patient.first_name for patient in self.patients]
+        p_id_visit = [visit.patient_id for visit in self.visits]
         exit = False
         
         while exit == False:
@@ -38,7 +39,8 @@ class CLI:
                     print(f'{index + 1}. first: {patient.first_name} last: {patient.last_name}')
                 user_input = input("Which patient do you want to see? ENTER Num ")
                 if int(user_input) in patient_ids:
-                    print (patient_names[int(user_input)-1])
+                    # print (patient_names[int(user_input)-1)
+                    print (patient_ids, p_id_visit)
             elif user_input =="B" or user_input == "b":
                 print(' ')
                 print('** Doctors **')
