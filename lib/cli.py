@@ -22,6 +22,7 @@ class CLI:
         patient_ids = [patient.id for patient in self.patients]
         patient_names = [patient.first_name for patient in self.patients]
         p_id_visit = [visit.patient_id for visit in self.visits]
+        
         exit = False
         
         while exit == False:
@@ -38,9 +39,11 @@ class CLI:
                 for index, patient in enumerate(self.patients):
                     print(f'{index + 1}. first: {patient.first_name} last: {patient.last_name}')
                 user_input = input("Which patient do you want to see? ENTER Num ")
-                if int(user_input) in patient_ids:
+                if int(user_input) in patient_ids and p_id_visit:
                     # print (patient_names[int(user_input)-1)
-                    print (patient_ids, p_id_visit)
+                    print ("we have a patient ")
+                else:
+                    print ("no patient")    
             elif user_input =="B" or user_input == "b":
                 print(' ')
                 print('** Doctors **')
