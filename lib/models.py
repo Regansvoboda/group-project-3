@@ -59,3 +59,11 @@ class Visit(Base):
                 + f"Unit: {self.unit_id} " \
                 + f"Status: {self.status} " \
 
+class Test(Base):
+    __tablename__ = 'test'
+
+    id = Column(Integer(), primary_key=True)
+
+    def __repr__(self):
+        return f"Test: {self.id}: "
+
