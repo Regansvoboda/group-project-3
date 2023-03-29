@@ -39,8 +39,8 @@ class CLI:
                 for index, patient in enumerate(self.patients):
                     print(f'{index + 1}. first: {patient.first_name} last: {patient.last_name}')
                 user_input = input("Which patient do you want to see? ENTER Num ")
-                if int(user_input) in patient_ids and p_id_visit:
-                    # print (patient_names[int(user_input)-1)
+                if (int(user_input) in patient_ids) and (int(user_input) in p_id_visit):
+                    print (patient_names[int(user_input)-1])
                     print ("we have a patient ")
                 else:
                     print ("no patient")    
