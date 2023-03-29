@@ -57,23 +57,23 @@ if __name__ == '__main__':
     )
     
     visit_1 = Visit(
-        patient_id=0,
-        doctor_id=0,
+        patient_id=1,
+        doctor_id=2,
         unit_id=1,
         status="Dead",
     )
     
     visit_2 = Visit(
-        patient_id=1,
-        doctor_id=1,
-        unit_id=0,
+        patient_id=2,
+        doctor_id=2,
+        unit_id=2,
         status="Discharged",
     )
     
     visit_3 = Visit(
-        patient_id=2,
-        doctor_id=2,
-        unit_id=0,
+        patient_id=3,
+        doctor_id=3,
+        unit_id=2,
         status="AWESOME!",
     )
 
