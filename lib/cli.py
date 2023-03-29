@@ -59,6 +59,9 @@ class CLI:
                 
                 for index, visit in enumerate(self.visits):
                     print(f'{index + 1}. Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Unit ID: {visit.unit_id} Status: {visit.status}')
+                    
+            elif user_input =="X" or user_input == "x":
+                exit = True
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///db/hospital.db')
