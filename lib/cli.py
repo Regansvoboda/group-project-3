@@ -1,4 +1,4 @@
-from db.models import Patient, Doctor, Unit, Visit
+from models import Patient, Doctor, Unit, Visit
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -69,7 +69,7 @@ class CLI:
                 exit = True
 
 if __name__ == '__main__':
-    engine = create_engine('sqlite:///db/hospital.db')
+    engine = create_engine('sqlite:///hospital.db')
     Session = sessionmaker(bind=engine)
     session = Session()
     CLI()
