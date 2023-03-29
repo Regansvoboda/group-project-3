@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
@@ -7,7 +6,6 @@ from sqlalchemy.ext.declarative import declarative_base
 engine = create_engine('sqlite:///hospital.db')
 
 Base = declarative_base()
-
 
 class Patient(Base):
     __tablename__ = 'patients'
@@ -60,8 +58,4 @@ class Visit(Base):
                 + f"Doctor: {self.doctor_id} " \
                 + f"Unit: {self.unit_id} " \
                 + f"Status: {self.status} " \
-
-if __name__ == '__main__':
-    engine = create_engine('sqlite:///hospital.db')
-    Base.metadata.create_all(engine)
 

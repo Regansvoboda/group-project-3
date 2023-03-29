@@ -1,18 +1,12 @@
 #!/usr/bin/env python3
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
-Base = declarative_base()
-
 from models import Patient, Doctor, Unit, Visit
 
 if __name__ == '__main__':
     
     engine = create_engine('sqlite:///hospital.db')
-    Base.metadata.create_all(engine)
-
     Session = sessionmaker(bind=engine)
     session = Session()
 
