@@ -16,6 +16,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    session.query(Patient).delete()
+    session.query(Doctor).delete()
+    session.query(Unit).delete()
+    session.query(Visit).delete()
+
     scott_henry = Patient(
         first_name="Scott",
         last_name="Henry",
@@ -45,7 +50,7 @@ if __name__ == '__main__':
         first_name="Doctor",
         last_name="Feelgood",
     )
-    
+
     unit_1 = Unit(
         name="Recovery",
         location="A Wing",
@@ -54,7 +59,7 @@ if __name__ == '__main__':
     unit_2 = Unit(
         name="Emergency",
         location="B Wing",
-    )
+    )  
     
     visit_1 = Visit(
         patient_id=1,
@@ -71,7 +76,7 @@ if __name__ == '__main__':
     )
     
     visit_3 = Visit(
-        patient_id=3,
+        patient_id=2,
         doctor_id=3,
         unit_id=2,
         status="AWESOME!",
@@ -80,4 +85,9 @@ if __name__ == '__main__':
     session.bulk_save_objects([scott_henry, regan_svoboda, connor_sheets, doctor_bad, doctor_good, doctor_feelgood, unit_1, unit_2, visit_1, visit_2, visit_3])
     session.commit()
     # session.close()
+
+
+    
+    
+    
 
