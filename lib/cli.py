@@ -21,6 +21,20 @@ def print_welcome_message():
     print("   |_| |_|\___|_|_|\___/ ")
     print(' ')
     print(' Welcome to the Hospital Database!')
+
+def print_main_menu():
+    print(' ')
+    print('    MAIN MENU   ')
+    print('-----------------')
+    print(' ')
+    print('( x to exit, / to clear screen) ')
+    print(' ')
+    print(' A. View Patients')
+    print(' B. View Doctors')
+    print(' C. View Units')
+    print(' D. View Visits')
+    print('-----------------')
+    print(' ')
     
 def print_patient(patient):
         print(' ')
@@ -91,31 +105,21 @@ class CLI:
         exit = False
         print_welcome_message()
         while exit == False:
-            print(' ')
-            print('    MAIN MENU   ')
-            print('-----------------')
-            print(' ')
-            print('( x to exit, / to clear screen) ')
-            print(' ')
-            print(' A. View Patients')
-            print(' B. View Doctors')
-            print(' C. View Units')
-            print(' D. View Visits')
-            print('-----------------')
-            print(' ')
+            print_main_menu()
             user_input = input("Select Option: ")
             
             if user_input =="A" or user_input == "a":
                 print_patients(self.patients)
-                user_input = input("Select Patient (x to Exit): ")
+                user_input = input("Select Patient (M for Main, x to Exit): ")
                 print(' ')
-                if (int(user_input) in patient_ids) and (int(user_input) in p_id_visit):    
+                if (user_input == "m") or (user_input == "M"):
+                    os.system('clear')
+                    
+                elif (int(user_input) in patient_ids) and (int(user_input) in p_id_visit):    
                     for visit in self.visits:
                         if visit.patient_id == int(user_input):
                             print(f"{(patient_names[int(user_input)-1])} is seeing Dr. {doctor_names[visit.doctor_id - 1 ]} in the {unit_names[visit.unit_id - 1]} unit and is {visit.status}")
-                else:
-                    print ("no patient")
-                     
+                
             elif user_input =="B" or user_input == "b":
                 print_doctors(self.doctors)
 
