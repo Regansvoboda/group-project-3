@@ -171,8 +171,7 @@ class CLI:
                             print_visit(visit, self.patients, self.doctors )
 
             elif user_input =="D" or user_input == "d":
-                print_visits(self.visits)
-                    
+                print(f"{patient_names[visit.patient_id -1]} w/ Dr {doctor_names[visit.doctor_id -1]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
             elif user_input =="X" or user_input == "x":
                 exit = True
 
