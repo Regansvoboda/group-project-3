@@ -250,6 +250,7 @@ class CLI:
                             user_input = input("Select Unit to see active visits (m for Main Menu, x to exit): ")
                 
             elif user_input =="D" or user_input == "d":
+                os.system('clear')
                 print_visits(self.visits, self.patients, self.doctors, self.units)
                 print('')
                 user_input = input("m for Main Menu, x to exit: ")
