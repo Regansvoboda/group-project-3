@@ -3,17 +3,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import os
 
-# from helpers import (
-#     function_1, function_2,
-#     function_3, function_4,
-#     function_5, function_6,
-#     function_7, function_8,
-#     function_9, function_10
-# )
+from helpers import car_animation
 
 def print_welcome_message():
     os.system('clear')
-    print(' ')
+    car_animation()
     print("    _   _      _ _ ")
     print("   | | | | ___| | | ___ ")
     print("   | |_| |/ _ \ | |/ _ \ ")
@@ -24,56 +18,53 @@ def print_welcome_message():
 
 def print_main_menu():
     print(' ')
-    print('------------------')
-    print('|    MAIN MENU   |')
-    print('------------------')
+    print(' ------------------')
+    print(' |    MAIN MENU   |')
+    print(' ------------------')
     print(' ')
-    print('( x to exit) ')
+    print(' (x to Exit) ')
     print(' ')
     print(' A. View Patients')
     print(' B. View Doctors')
     print(' C. View Units')
     print(' D. View Visits')
-    print('------------------')
+    print(' ------------------')
     print(' ')
     
 def print_patient_menu(patients):
     os.system('clear')
     print(' ')
-    print('------------------')
-    print('|  PATIENT MENU  |')
-    print('------------------')
+    print('--------------------')
+    print('|   PATIENT MENU   |')
+    print('--------------------')
     print(' ')
-    print('( x to exit, m for Main Menu) ')
-    print(' ')
+    print('(x to Exit, m for Main Menu) ')
     print_patients(patients)
-    print('------------------')
+    print('--------------------')
     print(' ')
 
 def print_doctor_menu(doctors):
     os.system('clear')
     print(' ')
-    print('------------------')
-    print('|   DOCTOR MENU  |')
-    print('------------------')
+    print('--------------------')
+    print('|    DOCTOR MENU   |')
+    print('--------------------')
     print(' ')
-    print('( x to exit, m for Main Menu) ')
-    print(' ')
+    print('(x to Exit, m for Main Menu) ')
     print_doctors(doctors)
-    print('------------------')
+    print('-------------------')
     print(' ')
 
 def print_unit_menu(units):
     os.system('clear')
     print(' ')
     print('------------------')
-    print('|    UNIT MENU   |')
+    print('|   UNIT MENU    |')
     print('------------------')
     print(' ')
-    print('( x to exit, m for Main Menu) ')
-    print(' ')
+    print('(x to Exit, m for Main Menu) ')
     print_units(units)
-    print('------------------')
+    print('-------------------------------')
     print(' ')
     
 def print_patient(patient):
@@ -83,11 +74,10 @@ def print_patient(patient):
 
 def print_patients(patients):
         print(' ')
-        print('** Patients **')
-        print(' ')
+        print('***** Patients *****')
+        print('--------------------')
         for index, patient in enumerate(patients):
             print(f'{index + 1}. {patient.first_name} {patient.last_name}')
-        print(' ')
             
 def print_doctor(doctor):
     print(' ')
@@ -96,8 +86,8 @@ def print_doctor(doctor):
     
 def print_doctors(doctors):
     print(' ')
-    print('** Doctors **')
-    print(' ')
+    print('***** Doctors *****')
+    print('-------------------')
     for index, doctor in enumerate(doctors):
         print(f'{index + 1}. {doctor.first_name} {doctor.last_name}')
     
@@ -108,26 +98,24 @@ def print_unit(unit):
     
 def print_units(units):
     print(' ')
-    print('** Units **')
-    print(' ')
+    print('      ***** Units *****')
+    print('-------------------------------')
     for index, unit in enumerate(units):
-        print(f'{index + 1}. Unit Name: {unit.name}  Location: {unit.location}')
+        print(f'{index + 1}. {unit.name}  Location: {unit.location}')
 
 def print_visit(visit, patients, doctors):
-    print(' ')
-    print(f"{patients[visit.patient_id - 1]} is with {doctors[visit.doctor_id -1]}. Patient Status: {visit.status}")
-    print(' ')
+    print(f"{patients[visit.patient_id - 1].first_name} is with Dr. {doctors[visit.doctor_id -1].last_name}. Patient Status: {visit.status}.")
     # print(' ')
     # print(f'Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Unit ID: {visit.unit_id} Status: {visit.status}')
     # print(' ')
     
-def print_visits(visits):
+def print_visits(visits, patients, doctors, units):
     print(' ')
-    print('** Visits **')
-    print(' ')
+    print('                    ***** Curent Visits ******')
+    print('---------------------------------------------------------------------')
     for index, visit in enumerate(visits):
-        print(f'{index + 1}. Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Unit ID: {visit.unit_id} Status: {visit.status}')
-        
+        print(f"{patients[visit.patient_id -1].first_name} is with Dr. {doctors[visit.doctor_id -1].last_name} in the {units[visit.unit_id-1].name} unit. {patients[visit.patient_id -1].first_name} is {visit.status}.")
+    print('---------------------------------------------------------------------')
 class CLI:
     def __init__(self):
         self.patients = [patient for patient in session.query(Patient)]
@@ -149,7 +137,7 @@ class CLI:
         print_welcome_message()
         while exit == False:
             print_main_menu()
-            user_input = input("Select Option: ")
+            user_input = input(" Select Option: ")
             
             if user_input.lower() == "a":
                 print_patients(self.patients)
@@ -220,7 +208,7 @@ class CLI:
                             for visit in self.visits:
                                 if (int(user_input) in doctor_ids):
                                     if visit.doctor_id == int(user_input):
-                                        print(f"{doctor_names[visit.doctor_id-1]} is seeing {patient_names[visit.patient_id -1 ]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
+                                        print(f"Dr. {doctor_names[visit.doctor_id-1]} is seeing {patient_names[visit.patient_id -1 ]} in the {unit_names[visit.unit_id-1]} unit. {patient_names[visit.patient_id -1 ]} is {visit.status}.")
                             print(' ')
                             user_input = input("Select Doctor (m for Main Menu, x to exit): ")
                         
@@ -229,7 +217,7 @@ class CLI:
                 print_unit_menu(self.units)
                 print(' ')
                 print(' ')
-
+                print(' ')
                 user_input = input("Select Unit to see active visits (m for Main Menu, x to exit): ")
                 print(' ')
                 exit_units= False
@@ -261,17 +249,21 @@ class CLI:
                             print(' ')
                             user_input = input("Select Unit to see active visits (m for Main Menu, x to exit): ")
                 
-                
-
             elif user_input =="D" or user_input == "d":
-                for visit in self.visits:
-                    print(f"Dr {patient_names[visit.patient_id -1]} w/ Dr {doctor_names[visit.doctor_id -1]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
-                user_input = input("m for Main Menu, x to exit:")
-                if user_input.lower() == "m":
-                    os.system('clear')  
-                if user_input.lower() == "x":
-                    return    
+                print_visits(self.visits, self.patients, self.doctors, self.units)
+                print('')
+                user_input = input("m for Main Menu, x to exit: ")
+                exit_visits= False
+                while exit_visits == False:
+                    if user_input.lower() == "m":
+                        os.system('clear')
+                        exit_visits = True
+                    if user_input.lower() == "x":
+                        return
+
+
             elif user_input =="X" or user_input == "x":
+                print('Goodbye!')
                 exit = True
 
 if __name__ == '__main__':
