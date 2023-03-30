@@ -2,19 +2,25 @@ from models import Patient, Doctor, Unit, Visit
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import os
+import cursor
+import curses
 
-from helpers import car_animation
+from helpers import car_animation, car_crash_animation, loading
 
 def print_welcome_message():
     os.system('clear')
-    car_animation()
+    loading()
+    cursor.hide()
+    car_animation(0.075)
+    car_crash_animation(0.075)
     print("    _   _      _ _ ")
     print("   | | | | ___| | | ___ ")
     print("   | |_| |/ _ \ | |/ _ \ ")
     print("   |  _  |  __/ | | (_) |")
     print("   |_| |_|\___|_|_|\___/ ")
     print(' ')
-    print(' Welcome to the Hospital Database!')
+    print(' Welcome to the Hospital!')
+    cursor.show()
 
 def print_main_menu():
     print(' ')
@@ -264,7 +270,12 @@ class CLI:
                     if user_input.lower() == "x":
                         return
 
-
+            elif user_input =="/":
+                os.system('clear')
+                print_welcome_message()
+                print_main_menu()
+                user_input = input("Select Option: ")
+                
             elif user_input =="X" or user_input == "x":
                 print('Goodbye!')
                 exit = True
