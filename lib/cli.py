@@ -264,7 +264,13 @@ class CLI:
                 
 
             elif user_input =="D" or user_input == "d":
-                print(f"{patient_names[visit.patient_id -1]} w/ Dr {doctor_names[visit.doctor_id -1]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
+                for visit in self.visits:
+                    print(f"Dr {patient_names[visit.patient_id -1]} w/ Dr {doctor_names[visit.doctor_id -1]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
+                user_input = input("m for Main Menu, x to exit:")
+                if user_input.lower() == "m":
+                    os.system('clear')  
+                if user_input.lower() == "x":
+                    return    
             elif user_input =="X" or user_input == "x":
                 exit = True
 
