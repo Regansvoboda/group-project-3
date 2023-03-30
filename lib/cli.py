@@ -133,30 +133,33 @@ class CLI:
 
                 user_input = input("Select Patient (m for Main Menu, x to exit): ")
                 print(' ')
-
-                if user_input.lower() == "m":
-                    os.system('clear')
-                elif user_input.lower() == "x":
-                    return
-                else:
-                    try:
-                        patient_id = int(user_input)
-                    except ValueError:
-                        print('Invalid input. Please enter a valid patient ID or option.\n')
-                        continue
-
-                    if patient_id not in patient_ids:
-                        print(' ')
-                        print('Invalid Patient ID')
-                        print(' ')
-                    else:
+                exit_patient = False
+                while exit_patient == False:
+                    if user_input.lower() == "m":
                         os.system('clear')
-                        print_patient_menu(self.patients)
-                        for visit in self.visits:
-                            if visit.patient_id == patient_id:
-                                print(f"{(patient_names[patient_id - 1])} is seeing Dr. {doctor_names[visit.doctor_id - 1 ]} in the {unit_names[visit.unit_id - 1]} unit and is {visit.status}")
-                        print(' ')
-                        user_input = input("Select Patient (m for Main Menu, x to exit): ")
+                        exit_patient = True
+                    elif user_input.lower() == "x":
+                        return
+                    else:
+                        try:
+                            patient_id = int(user_input)
+                        except ValueError:
+                            print('Invalid input. Please enter a valid patient ID or option.\n')
+                            user_input = input("Select Patient (m for Main Menu, x to exit): ")
+
+                        if patient_id not in patient_ids:
+                            print(' ')
+                            print('Invalid Patient ID')
+                            print(' ')
+                            user_input = input("Select Patient (m for Main Menu, x to exit): ")
+                        else:
+                            os.system('clear')
+                            print_patient_menu(self.patients)
+                            for visit in self.visits:
+                                if visit.patient_id == patient_id:
+                                    print(f"{(patient_names[patient_id - 1])} is seeing Dr. {doctor_names[visit.doctor_id - 1 ]} in the {unit_names[visit.unit_id - 1]} unit and is {visit.status}")
+                            print(' ')
+                            user_input = input("Select Patient (m for Main Menu, x to exit): ")
                     
             elif user_input =="B" or user_input == "b":
                 print_doctors(self.doctors)
