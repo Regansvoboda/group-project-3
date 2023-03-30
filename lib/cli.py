@@ -242,6 +242,8 @@ class CLI:
                         else:
                             os.system('clear')
                             print_unit_menu(self.units)
+                            print(f'Visits in Unit {user_input}:')
+                            print('-----------------')
                             if (int(user_input) in unit_ids):
                                 for visit in self.visits:
                                     if visit.unit_id == int(user_input):
