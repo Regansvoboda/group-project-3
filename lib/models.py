@@ -16,8 +16,8 @@ class Patient(Base):
     visits = relationship('Visit', backref=backref('patients'))
     
     def __repr__(self):
-        return f"Patient: {self.id}: " \
-                + f"Name: {self.first_name}, {self.last_name}"
+        return f"Patient {self.id}: " \
+                + f"Name: {self.last_name}, {self.first_name}"
 
 class Doctor(Base):
     __tablename__ = 'doctors'
@@ -28,8 +28,7 @@ class Doctor(Base):
     visits = relationship('Visit', backref=backref('doctors'))
     
     def __repr__(self):
-        return f"Doctor: {self.id}: " \
-                + f"Name: {self.first_name}, {self.last_name}"
+        return f"Dr {self.last_name}"
 
 class Unit(Base):
     __tablename__ = 'units'

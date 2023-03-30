@@ -73,10 +73,13 @@ def print_units(units):
     for index, unit in enumerate(units):
         print(f'{index + 1}. Unit Name: {unit.name}  Location: {unit.location}')
 
-def print_visit(visit):
+def print_visit(visit, patients, doctors):
     print(' ')
-    print(f'Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Unit ID: {visit.unit_id} Status: {visit.status}')
+    print(f"{patients[visit.patient_id - 1]} is with {doctors[visit.doctor_id -1]}. Patient Status: {visit.status}")
     print(' ')
+    # print(' ')
+    # print(f'Patient ID: {visit.patient_id} Doctor ID: {visit.doctor_id} Unit ID: {visit.unit_id} Status: {visit.status}')
+    # print(' ')
     
 def print_visits(visits):
     print(' ')
@@ -122,9 +125,21 @@ class CLI:
                 
             elif user_input =="B" or user_input == "b":
                 print_doctors(self.doctors)
-
+                user_input = input("Select Doctor to see their visits")
+                print('')
+                if (int(user_input) in doctor_ids):
+                    for visit in self.visits:
+                        if visit.doctor_id == int(user_input):
+                            print(f"{doctor_names[visit.doctor_id]} is seeing {patient_names[visit.patient_id -1 ]} in {unit_names[visit.unit_id-1]} unit, patient is {visit.status}")
+                        
             elif user_input =="C" or user_input == "c":
                 print_units(self.units)
+                user_input = input("Select a unit to see active visits")
+                print ('')
+                if (int(user_input) in unit_ids):
+                    for visit in self.visits:
+                        if visit.unit_id == int(user_input):
+                            print_visit(visit, self.patients, self.doctors )
 
             elif user_input =="D" or user_input == "d":
                 print_visits(self.visits)

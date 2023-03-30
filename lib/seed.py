@@ -64,14 +64,14 @@ if __name__ == '__main__':
     
     visit_2 = Visit(
         patient_id=2,
-        doctor_id=2,
+        doctor_id=3,
         unit_id=1,
         status="Discharged",
     )
     
     visit_3 = Visit(
         patient_id=3,
-        doctor_id=3,
+        doctor_id=2,
         unit_id=1,
         status="AWESOME!",
     )
