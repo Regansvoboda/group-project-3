@@ -23,7 +23,7 @@ def print_welcome_message():
     print(' Welcome to the Hospital Database!')
 
 def print_main_menu():
-    os.system('clear')
+    # os.system('clear')
     print(' ')
     print('------------------')
     print('|    MAIN MENU   |')
@@ -130,23 +130,18 @@ class CLI:
             
             if user_input =="A" or user_input == "a":
                 print_patient_menu(self.patients)
-                user_input = input("Select Patient (M for Main, x to Exit): ")
+                user_input = input("Select Patient ( x to Exit, M for Main ): ")
                 if (user_input == "m") or (user_input == "M"):
                     Exit = True
                 if (user_input == "x") or (user_input == "X"):
                     return
-                elif int(user_input) not in patient_ids:
-                    print(' ')
-                    print('Invalid Patient ID')
-                    print(' ')
-                    user_input = input("Select Patient (M for Main, x to Exit): ")
                 else:
                     print(' ')
                     for visit in self.visits:
-                        print(f"{(patient_names[int(user_input)])} is seeing Dr. {doctor_names[visit.doctor_id]} in the {unit_names[visit.unit_id]} unit")
-                    user_input = input("Select Patient (M for Main, x to Exit): ")
+                        if visit.patient_id == int(user_input):
+                            print(f"{(patient_names[int(user_input)-1])} is seeing Dr. {doctor_names[int(visit.doctor_id)-1]} in the {unit_names[int(visit.unit_id)-1]} unit")
                     print(' ')
-                    print(' ')
+                    user_input = input("Select Option: ")
                 
             elif user_input =="B" or user_input == "b":
                 print_doctors(self.doctors)
@@ -168,9 +163,6 @@ class CLI:
 
             elif user_input =="D" or user_input == "d":
                 print_visits(self.visits)
-            
-            elif user_input =="/":
-                os.system('clear')
                     
             elif user_input =="X" or user_input == "x":
                 exit = True
