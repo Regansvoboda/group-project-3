@@ -354,3 +354,15 @@ def loading():
         os.system('cls' if os.name == 'nt' else 'clear')
         print(frame)
         time.sleep(.5)
+
+def print_goodbye():
+    print(' ')
+    print(' ')
+    print('   ____                 _ _                _     ')
+    print('  / ___| ___   ___   __| | |__  _   _  ___| |    ')
+    print(' | |  _ / _ \ / _ \ / _` | |  \| | | |/ _ \ |    ')
+    print(' | |_| | (_) | (_) | (_| | |_) | |_| |  __/_|    ')
+    print('  \____|\___/ \___/ \__,_|_.__/ \__, |\___(_)    ')
+    print('                                |___/            ')
+    print(' ')
+    print(' ')

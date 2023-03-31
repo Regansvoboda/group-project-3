@@ -5,7 +5,7 @@ import os
 import cursor
 import curses
 
-from helpers import car_animation, car_crash_animation, loading
+from helpers import car_animation, car_crash_animation, loading, print_goodbye
 
 def print_welcome_message():
     os.system('clear')
@@ -277,7 +277,8 @@ class CLI:
                 user_input = input("Select Option: ")
                 
             elif user_input =="X" or user_input == "x":
-                print('Goodbye!')
+                os.system('clear')
+                print_goodbye()
                 exit = True
 
 if __name__ == '__main__':
