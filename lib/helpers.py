@@ -312,40 +312,45 @@ def loading():
     frame1 = """
      
      
-                -  Loading  -
+                    -  Loading  -
      
-    
+        Copyright (c) 1983 by Flatiron Systems, Inc.
+        
     """
 
     frame2 = """
      
      
-                |  Loading  |
+                    X  Loading  X
      
+        Copyright (c) 1983 by Flatiron Systems, Inc.
     
     """
 
     frame3 = """
      
      
-                *  Loading  *
+                    |  Loading  |
      
+        Copyright (c) 1983 by Flatiron Systems, Inc. 
     
     """
 
     frame4 = """
      
      
-                x  Loading  x
-     
+                    X  Loading  X
+                    
+        Copyright (c) 1983 by Flatiron Systems, Inc.
     
     """
 
     frame5 = """
      
      
-                !  Loading  !
+                    -  Loading  -
      
+        Copyright (c) 1983 by Flatiron Systems, Inc.
     
     """
     
