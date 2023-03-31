@@ -9,8 +9,8 @@ from helpers import car_animation, car_crash_animation, loading
 
 def print_welcome_message():
     os.system('clear')
-    loading()
     cursor.hide()
+    loading()
     car_animation(0.075)
     car_crash_animation(0.075)
     print("    _   _      _ _ ")
