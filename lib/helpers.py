@@ -312,7 +312,7 @@ def loading():
     frame1 = """
      
      
-                    -  Loading  -
+                      -  Loading  -
      
         Copyright (c) 1983 by Flatiron Systems, Inc.
         
@@ -321,7 +321,7 @@ def loading():
     frame2 = """
      
      
-                    X  Loading  X
+                      X  Loading  X
      
         Copyright (c) 1983 by Flatiron Systems, Inc.
     
@@ -330,7 +330,7 @@ def loading():
     frame3 = """
      
      
-                    |  Loading  |
+                      |  Loading  |
      
         Copyright (c) 1983 by Flatiron Systems, Inc. 
     
@@ -339,7 +339,7 @@ def loading():
     frame4 = """
      
      
-                    X  Loading  X
+                      X  Loading  X
                     
         Copyright (c) 1983 by Flatiron Systems, Inc.
     
@@ -348,7 +348,7 @@ def loading():
     frame5 = """
      
      
-                    -  Loading  -
+                      -  Loading  -             
      
         Copyright (c) 1983 by Flatiron Systems, Inc.
     
@@ -358,7 +358,7 @@ def loading():
     for frame in frames:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(frame)
-        time.sleep(.5)
+        time.sleep(.75)
 
 def print_goodbye():
     print(' ')
